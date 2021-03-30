@@ -13,3 +13,4 @@ Process:
 9. apply multi-threading to application to reduce response time within 1s for analysis and 2s for predict
 10.apply UI to applciation
 11.intergrating all and test all
+.
