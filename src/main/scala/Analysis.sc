@@ -7,7 +7,7 @@ val spark = SparkSession
   .config("spark.some.config.option", "some-value")
   .getOrCreate()
 
-val df = spark.read.//...
+val df = spark.read.csv("Video-Game")
 
 
 
