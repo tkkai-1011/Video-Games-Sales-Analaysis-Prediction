@@ -1,8 +1,9 @@
-name := "Video Games Sales"
+
+name := """Video-Games-Sales-Analaysis-Prediction"""
 
 version := "0.1"
 
-scalaVersion := "2.12.0"
+scalaVersion := "2.12.13"
 
 
 
@@ -37,23 +38,34 @@ libraryDependencies +=
   "org.apache.spark" %% "spark-mllib" % "3.1.1" % "provided"
 
 
-lazy val root = (project in file("."))
-  .enablePlugins(PlayScala)
-  .settings(
-    name := """play-scala-hello-world-tutorial""",
-    organization := "com.example",
-    version := "1.0-SNAPSHOT",
-    scalaVersion := "2.13.4",
-    libraryDependencies ++= Seq(
-      guice,
-      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
-    ),
-    scalacOptions ++= Seq(
-      "-feature",
-      "-deprecation",
-      "-Xfatal-warnings"
-    )
-  )
+
+
+libraryDependencies ++= Seq(
+  "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+)
+scalacOptions ++= Seq(
+  "-feature",
+  "-deprecation",
+  "-Xfatal-warnings"
+)
+
+//lazy val root = (project in file("."))
+//  .enablePlugins(PlayScala)
+//  .settings(
+//    name := """play-scala-hello-world-tutorial""",
+//    organization := "com.example",
+//    version := "1.0-SNAPSHOT",
+//    scalaVersion := "2.13.4",
+//    libraryDependencies ++= Seq(
+//      guice,
+//      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
+//    ),
+//    scalacOptions ++= Seq(
+//      "-feature",
+//      "-deprecation",
+//      "-Xfatal-warnings"
+//    )
+//  )
 
 
 
