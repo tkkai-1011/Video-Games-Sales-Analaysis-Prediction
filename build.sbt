@@ -17,10 +17,13 @@ libraryDependencies  ++= Seq(
   // the visualization library is distributed separately as well.
   // It depends on LGPL code.
   "org.scalanlp" %% "breeze-viz" % "1.1",
-  // Plotly for Scala.
-  "co.theasi" %% "plotly" % "0.2.0",
-  // Scala library able to output JSON that can be passed to plotly.js. Its classes closely follow the API of plotly.js
-  "org.plotly-scala" %% "plotly-almond" % "0.8.1"
+
+)
+libraryDependencies ++= Seq(
+// Plotly for Scala.
+"co.theasi" %% "plotly" % "0.2.0",
+// Scala library able to output JSON that can be passed to plotly.js. Its classes closely follow the API of plotly.js
+"org.plotly-scala" %% "plotly-almond" % "0.8.1"
 )
 
 libraryDependencies ++= Seq(
