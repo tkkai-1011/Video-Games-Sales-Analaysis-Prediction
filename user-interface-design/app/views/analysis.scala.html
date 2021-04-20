@@ -1,6 +1,7 @@
-@()
-
+@import helper._
+@(form: Form[BasicForm])(implicit messages: Messages)
 @main("Analysis") {
+
 <section id="top">
     <div class="wrapper">
         <h1 aria-atomic="true" align="center">Analysis for Game Sale</h1>
@@ -8,9 +9,10 @@
 
     <div align="center">
         <h3 aria-atomic="true" align="center">output graphs based on key features</h3>
-        KEY FEATURES: <input type="text" id="info"><br><br>
-
-        <input type="button" id="submit" value="Show"><br><br>
+        @helper.form(routes.HomeController.analysisPost) {
+            @inputText(form("name"))
+            <input type="submit" value="Submit">
+        }
     </div>
 
 </section>

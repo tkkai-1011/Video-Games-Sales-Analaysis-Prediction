@@ -1,18 +1,24 @@
 
-name := """User-Interface-Design"""
-organization := "edu.neu.csye7200"
-
-version := "1.0-SNAPSHOT"
-
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
-
-scalaVersion := "2.13.3"
-
-libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
-
-// Adds additional packages into Twirl
-//TwirlKeys.templateImports += "edu.neu.csye7200.controllers._"
-
-// Adds additional packages into conf/routes
-// play.sbt.routes.RoutesKeys.routesImport += "edu.neu.csye7200.binders._"
+lazy val root = (project in file("."))
+  .enablePlugins(PlayScala)
+  .settings(
+    name := """User-Interface-Design""",
+    version := "2.6.x",
+    scalaVersion := "2.12.13",
+    libraryDependencies ++= Seq(
+      guice,
+      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
+    ),
+    libraryDependencies ++= Seq(
+      "org.apache.spark" % "spark-core_2.12" % "3.1.1",
+      "org.apache.spark" % "spark-sql_2.12" % "3.1.1",
+      "org.apache.spark" % "spark-hive_2.12" % "3.1.1"
+    ),
+    libraryDependencies +=
+      "org.apache.spark" %% "spark-mllib" % "3.1.1" % "provided",
+        scalacOptions ++= Seq(
+          "-feature",
+          "-deprecation",
+          "-Xfatal-warnings"
+        )
+  )
