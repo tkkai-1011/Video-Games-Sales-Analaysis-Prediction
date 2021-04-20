@@ -1,10 +1,15 @@
 @()
 
 @main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
-<div class="topnav">
-  <a class="active" href="@routes.HomeController.index()">Home</a></li>
-  <a href="@routes.HomeController.analysis()">Analysis</a></li>
-  <a href="@routes.HomeController.pred()">Prediction</a></li>
+
+
+<h1 class="word" align="center">Video game sales analysis and prediction App</h1>
+<img class="div" align="right" src="@routes.Assets.versioned("images/PlayStation-Console-Slides.jpg")" alt="imagination">
+
+<div class="div1">
+  <nav><strong><a class="active" href="@routes.HomeController.index()">Home</a> &emsp;&emsp;&emsp;<a href="@routes.HomeController.analysis()">Analysis</a>&emsp;&emsp;&emsp; <a href="@routes.HomeController.pred()">Prediction</a>&emsp;</strong></nav>
+  <br><br>
 </div>
+
+
 }

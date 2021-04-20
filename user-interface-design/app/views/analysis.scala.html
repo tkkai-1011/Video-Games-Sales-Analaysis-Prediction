@@ -2,18 +2,22 @@
 @(form: Form[BasicForm])(implicit messages: Messages)
 @main("Analysis") {
 
-<section id="top">
-    <div class="wrapper">
-        <h1 aria-atomic="true" align="center">Analysis for Game Sale</h1>
-    </div>
+<h1 class="word" align="center">Analysis for Game Sales</h1>
+<img class="div" align="right" src="@routes.Assets.versioned("images/PlayStation-Console-Slides.jpg")" alt="imagination">
 
-    <div align="center">
-        <h3 aria-atomic="true" align="center">output graphs based on key features</h3>
+<div class="div1">
+    <nav><strong><a class="active" href="@routes.HomeController.index()">Home</a> &emsp;&emsp;&emsp;<a href="@routes.HomeController.analysis()">Analysis</a>&emsp;&emsp;&emsp; <a href="@routes.HomeController.pred()">Prediction</a>&emsp;</strong></nav>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <div style="position:absolute">
+        <h3>key feature:</h3>
         @helper.form(routes.HomeController.analysisPost) {
-            @inputText(form("name"))
-            <input type="submit" value="Submit">
+        @inputText(form("name"))
+        <input type="submit" value="Submit">
         }
     </div>
 
-</section>
+
+</div>
 }

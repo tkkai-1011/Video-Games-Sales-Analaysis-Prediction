@@ -17,7 +17,7 @@ import scala.collection._
  */
 
 case class BasicForm(name: String)
-
+case class Result(res: String)
 // this could be defined somewhere else,
 // but I prefer to keep it in the companion object
 object BasicForm {
@@ -60,6 +60,9 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     res
   }
 
+//  def show() = Action {implicit request =>
+//    Ok(views.html.show)
+//  }
 
   def analysisPost() = Action { implicit request =>
     val formData: BasicForm = BasicForm.form.bindFromRequest.get // Careful: BasicForm.form.bindFromRequest returns an Option

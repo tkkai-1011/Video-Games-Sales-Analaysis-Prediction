@@ -1,26 +1,23 @@
 
 @main("Prediction") {
-<div class="topnav">
-    <a href="@routes.HomeController.index()">Home</a></li>
-    <a href="@routes.HomeController.analysis()">Analysis</a></li>
-    <a  class="active" href="@routes.HomeController.pred()">Prediction</a></li>
+<h1 class="word" align="center">Prediction for Game Sales</h1>
+<img class="div" align="right" src="@routes.Assets.versioned("images/PlayStation-Console-Slides.jpg")" alt="imagination">
+
+<div class="div1">
+    <nav><strong><a class="active" href="@routes.HomeController.index()">Home</a> &emsp;&emsp;&emsp;<a href="@routes.HomeController.analysis()">Analysis</a>&emsp;&emsp;&emsp; <a href="@routes.HomeController.pred()">Prediction</a>&emsp;</strong></nav>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <div style="position:absolute">
+    <h3>Info about upcoming game</h3>
+    <form method ="post" >
+        Name: <input type="text" id="name"><br><br>
+        Price: <input type="text" id="price"><br><br>
+        Publisher: <input type="text" id="publisher"><br><br>
+        Release Year: <input type="text" id="release_year"><br><br>
+        Genre:<input type="text" id="genre"><br><br>
+        <input type="button" id="submit" value="Let's predict"><br><br>
+    </form>
+    </div>
 </div>
-<section id="top">
-    <div class="wrapper" align="center">
-        <h1>Prediction for Game Sale</h1>
-    </div>
-    <div align="center">
-        <h3>Info about upcoming game</h3>
-        <form method ="post" >
-            Name: <input type="text" id="name"><br><br>
-            Price: <input type="text" id="price"><br><br>
-            Publisher: <input type="text" id="publisher"><br><br>
-            Release Year: <input type="text" id="release_year"><br><br>
-            Genre:<input type="text" id="genre"><br><br>
-            <input type="button" id="submit" value="Let's predict"><br><br>
-        </form>
-
-
-    </div>
-</section>
 }
