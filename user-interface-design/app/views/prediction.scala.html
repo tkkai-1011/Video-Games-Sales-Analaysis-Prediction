@@ -4,7 +4,7 @@
 <img class="div" align="right" src="@routes.Assets.versioned("images/PlayStation-Console-Slides.jpg")" alt="imagination">
 
 <div class="div1">
-    <nav><strong><a class="active" href="@routes.HomeController.index()">Home</a> &emsp;&emsp;&emsp;<a href="@routes.HomeController.analysis()">Analysis</a>&emsp;&emsp;&emsp; <a href="@routes.HomeController.pred()">Prediction</a>&emsp;</strong></nav>
+    <nav><strong><a href="@routes.HomeController.index()">Home</a> &emsp;&emsp;&emsp;<a href="@routes.HomeController.analysis()">Analysis</a>&emsp;&emsp;&emsp; <a class="active"  href="@routes.HomeController.pred()">Prediction</a>&emsp;</strong></nav>
     <br><br><br><br><br>
     <br><br><br><br><br>
     <br><br><br><br><br>
@@ -18,6 +18,13 @@
         Genre:<input type="text" id="genre"><br><br>
         <input type="button" id="submit" value="Let's predict"><br><br>
     </form>
+
+        <br><br><br>
+        <form action=" @routes.HomeController.predPost()">
+            Linear Regression Model Result:
+            Placeholder: <input type="text"><br><br>
+            <input type="submit"  value="LR res"><br><br>
+        </form>
     </div>
 </div>
 }

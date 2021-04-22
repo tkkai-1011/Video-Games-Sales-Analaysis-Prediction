@@ -18,7 +18,7 @@ val spark = SparkSession
   .appName("Spark Hive Example")
   .config("spark.master", "local")
   .getOrCreate()
-
+def isEmpty(x: String) = x == null || x.isEmpty
 
 val data = spark.read.format("csv")
   .option("sep", ",")
@@ -26,39 +26,19 @@ val data = spark.read.format("csv")
   .option("header", "true")
   .load("C:\\Users\\qiank\\Final-Scala\\Video-Games-Sales-Analaysis-Prediction\\src\\main\\scala\\Video_Games_Sales_as_at_22_Dec_2016.csv")
 
-data.columns
-data.printSchema()
-data.orderBy(desc("NA_Sales")).show()
+val feature2 = "Name"
+val temp = scala.collection.mutable.ListBuffer.empty[String]
+temp.append("Name,Platform,Year_of_Release,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales,Critic_Score,Critic_Count,User_Score,User_Count,Developer,Rating")
+//var temp1 =data.orderBy(desc("NA_Sales"),desc("Global_Sales"),desc("Platform")).take(10).toList
+if (!isEmpty(feature2)){
+  data.orderBy(desc(feature2)).take(10).toList.foreach( x => temp.append(x.toString()))
+}
+val res = temp.mkString("\n")
+print(res)
+
 
 spark.stop()
-//// Drop the first line in first partition because it is the header.
-//val rdd = data.rdd.mapPartitionsWithIndex{(idx,iter) =>
-//  if(idx == 0) iter.drop(1) else iter
-//}
-//
-//// A function to create schema dynamically.
-//def schemaCreator(header: String): StructType = {
-//  StructType(header
-//    .split(",")
-//    .map(field => StructField(field.trim, StringType, true))
-//  )
-//}
-////val temp = data.first().toString()
-//// Create the schema for the csv that was read and store it.
-//val csvSchema: StructType = schemaCreator(data.first().toString().replaceAll("[\\[\\]]",""))
-//// As the input is CSV, split it at "," and trim away the whitespaces.
-//val rdd_curated = rdd.map(x => x.toString().split(",").map(y => y.trim)).map(xy => Row(xy:_*))
-//
-//// Create the DF from the RDD.
-//val df = spark.createDataFrame(rdd_curated, csvSchema)
-//
-////check Schema
-//df.printSchema()
-//
-//df.orderBy("Name")
 
-//val platform = df.orderBy("Name" )
-//platform.show()
 
 
 

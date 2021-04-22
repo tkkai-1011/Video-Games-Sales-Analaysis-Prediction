@@ -1,19 +1,26 @@
 @import helper._
-@(form: Form[BasicForm])(implicit messages: Messages)
+@(form: Form[BasicForm], form1 :Form[Simple])(implicit messages: Messages)
 @main("Analysis") {
 
 <h1 class="word" align="center">Analysis for Game Sales</h1>
 <img class="div" align="right" src="@routes.Assets.versioned("images/PlayStation-Console-Slides.jpg")" alt="imagination">
 
 <div class="div1">
-    <nav><strong><a class="active" href="@routes.HomeController.index()">Home</a> &emsp;&emsp;&emsp;<a href="@routes.HomeController.analysis()">Analysis</a>&emsp;&emsp;&emsp; <a href="@routes.HomeController.pred()">Prediction</a>&emsp;</strong></nav>
+    <nav><strong><a href="@routes.HomeController.index()">Home</a> &emsp;&emsp;&emsp;<a  class="active" href="@routes.HomeController.analysis()">Analysis</a>&emsp;&emsp;&emsp; <a href="@routes.HomeController.pred()">Prediction</a>&emsp;</strong></nav>
     <br><br><br><br><br>
     <br><br><br><br><br>
     <br><br><br><br><br>
     <div style="position:absolute">
-        <h3>key feature:</h3>
+        <h3>Input key feature to analyse:</h3>
         @helper.form(routes.HomeController.analysisPost) {
-        @inputText(form("name"))
+        @inputText(form("Fir_feature"))
+        @inputText(form("Sec_feature"))
+        @inputText(form("Thr_feature"))
+        <input type="submit" value="Submit">
+        }
+<br><br><br>
+        @helper.form(routes.HomeController.predPost) {
+        @inputText(form1("res"))
         <input type="submit" value="Submit">
         }
     </div>
