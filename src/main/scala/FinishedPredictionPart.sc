@@ -86,7 +86,7 @@ val Array(trainingData, testData) = result_df.randomSplit(Array(0.8, 0.2))
 //Create Linear Regression Model
 val lr = new LinearRegression()
   .setMaxIter(10)
-  .setRegParam(0.3)
+  .setRegParam(0.1)
   .setElasticNetParam(0.8)
   .setLabelCol("Global_Sales")
   .setFeaturesCol("features")
