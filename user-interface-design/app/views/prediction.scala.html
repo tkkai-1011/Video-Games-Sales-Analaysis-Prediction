@@ -1,4 +1,5 @@
-
+@import helper._
+@(form1 :Form[Simple])(implicit messages: Messages)
 @main("Prediction") {
 <h1 class="word" align="center">Prediction for Game Sales</h1>
 <img class="div" align="right" src="@routes.Assets.versioned("images/PlayStation-Console-Slides.jpg")" alt="imagination">
@@ -20,11 +21,12 @@
     </form>
 
         <br><br><br>
-        <form action=" @routes.HomeController.predPost()">
-            Linear Regression Model Result:
-            Placeholder: <input type="text"><br><br>
-            <input type="submit"  value="LR res"><br><br>
-        </form>
-    </div>
+        Linear Regression Model Result:
+
+        <br><br><br>
+        @helper.form(routes.HomeController.predPost) {
+        @inputText(form1("res"))
+        <input type="submit" value="Submit">
+        }
 </div>
 }

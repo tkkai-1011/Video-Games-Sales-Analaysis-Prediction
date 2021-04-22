@@ -57,14 +57,13 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
 //    var result = new Result("s")
 //  val result = scala.collection.mutable.ListBuffer.empty[String]
   def isEmpty(x: String) = x == null || x.isEmpty
-
+  val spark = SparkSession
+    .builder()
+    .appName("Spark Hive Example")
+    .config("spark.master", "local")
+    .getOrCreate()
 
   def process(feature1: String, feature2: String, feature3: String): String ={
-    val spark = SparkSession
-      .builder()
-      .appName("Spark Hive Example")
-      .config("spark.master", "local")
-      .getOrCreate()
     val data = spark.read.format("csv")
       .option("sep", ",")
       .option("inferSchema", "true")
@@ -100,7 +99,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     }
     val temp1 = List.concat(pro,temp)
     val res = temp1.mkString("\n")
-//      spark.stop()
+      spark.stop()
       res
   }
 
@@ -110,6 +109,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
       .appName("Spark Hive Example")
       .config("spark.master", "local")
       .getOrCreate()
+
     // Load training data
     val VideoGamesSales = spark.read.format("csv")
       .option("sep", ",")
@@ -123,7 +123,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     val features = NoNullVideoGamesSales.columns.filterNot(_.contains("Sales")).filterNot(_.contains("r_Score"))
       .filterNot(_.contains("Developer")).filterNot(_.contains("Rating"))
 
-
+    import org.apache.spark.ml.Estimator
     val encodedFeatures = features.flatMap { name =>
       val indexer = new StringIndexer()
         .setInputCol(name)
@@ -176,6 +176,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     val trainingSummary = lrModel.summary
     pro.append( s"numIterations: ${trainingSummary.totalIterations}")
     pro.append(s"objectiveHistory: [${trainingSummary.objectiveHistory.mkString(",")}]")
+    pro.append(s"P Values: ${trainingSummary.pValues.mkString(",")}")
 //    trainingSummary.residuals.show()
     pro.append(s"RMSE: ${trainingSummary.rootMeanSquaredError}")
     pro.append(s"r2: ${trainingSummary.r2}")
@@ -199,7 +200,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def pred() =  Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.prediction())
+    Ok(views.html.prediction(Simple.form))
   }
 
 }
